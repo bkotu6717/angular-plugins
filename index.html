@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Angular Pinch Zoom</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-	<style type="text/css">
-		.ttl {
-  position: absolute;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, .5);
-}
-	</style>
-</head>
-<body>
+	<head>
+		<title>Angular Pinch Zoom</title>
+		<link rel="stylesheet" type="text/css" href="./style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	</head>
+	<body>
+		<div ng-app="caratLane">
+			
+			<img id="myImg" src="pinch-me.jpg" alt="Trolltunga, Norway" width="300" height="200">
 
-<div ng-app="caratLane">
-<p class="ttl">ng-pinch-zoom</p>
-<img src="http://lorempixel.com/640/640/people/1/" max-scale="4" ng-pinch-zoom>
-</div>
-<script type="text/javascript" src="./app.js"></script>
-<script type="text/javascript" src="./ng-pinch-zoom.js"></script>
-</body>
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+			  <span class="close">×</span>
+			  <img class="modal-content" id="img01" ng-pinch-zoom>
+			  <div id="caption"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="./ng-pinch-zoom.js"></script>
+				<script type="text/javascript" src="./modal.js"></script>
+	</body>
 </html>
-
-
-
