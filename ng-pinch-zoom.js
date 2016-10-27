@@ -1,12 +1,11 @@
 /*! angular-pinch-zoom - v0.2.1 */
-angular.module('ngPinchZoom', [])
 /**
  * @ngdoc directive
  * @name ngPinchZoom
  * @restrict A
  * @scope false
  **/
-.directive('ngPinchZoom', function() {
+app.directive('ngPinchZoom', function() {
 
   var _directive =  {
     restrict : 'A',
