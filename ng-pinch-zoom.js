@@ -66,7 +66,8 @@ app.directive('ngPinchZoom', function() {
 
     if (attrs.ngSrc) {
       image.src = attrs.ngSrc;
-    } else {
+    }
+    if(attrs.src) {
       image.src = attrs.src;
     }
 
