@@ -23,7 +23,7 @@ function getData($timeout, $q) {
 
     // return the promise to the caller before execution completion of called method
     // so that caller will continue without waiting for the response of the called function
-    // when the caller recieves a promise response, it will be executing it's respective call back function(success/error)
+    // when the caller recieves a promise response, it will be executing it's respective call back function(success)
     return defer.promise;
   }
 }
@@ -33,9 +33,13 @@ app.factory('getData', getData)
   var promise = getData()
 	.then(function(string) { // promise resolved callback
 	  console.log("executed success callback as the promise gave resolved response:: ", string);
+	  return "adding some content in resolved: " +  string;
 	}, function(string) { // promise rejected callback
 		console.log("executed error callback as the promise gave rejected response:: ",string);
+		return "adding some content in rejected:  " +  string; // send result to chained promise
+	}).then(function(string){ // Chaning promsises by recieving result from upper call back
+		console.log("Explained promise chaining fetching result: ", string);
 	}).finally(function() { // Finally block will be executed regardless of promise resolved or rejected
-      console.log('Finished at:', new Date())
+      console.log('Finished at:', new Date());
     });
 })
