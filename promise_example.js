@@ -4,9 +4,15 @@ function getData($timeout, $q) {
     var defer = $q.defer()
 
     // simulated async function
-    $timeout(function() {
-    	defer.resolve("This is async!!");
-    }, 2000);
+     $timeout(function() {
+
+     	// if the rounded number is not 0 we resolve promise, if 0 we reject promise
+      if(Math.round(Math.random())) {
+        defer.resolve('promise resolved!!')
+      } else {
+        defer.reject('promise rejected!!')
+      }
+    }, 2000)
 
     // return the promise to the caller before execution completion of current method
     return defer.promise
@@ -16,7 +22,9 @@ function getData($timeout, $q) {
 app.factory('getData', getData)
 .run(function(getData) {
   var promise = getData()
-	.then(function(string) {
-	  console.log(string)
+	.then(function(string) { // promise resolved callback
+	  console.log(string);
+	}, function(string) { // promise rejected callback
+		console.log(string);
 	});
 })
